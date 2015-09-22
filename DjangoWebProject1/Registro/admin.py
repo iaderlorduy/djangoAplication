@@ -1,31 +1,29 @@
-from django.contrib import admin
-from Registro.models import Proyecto, Categoria, Perfil
+﻿from django.contrib import admin
+from Registro.models import Persona, Categoria, Patrocinio
 # Register your models here.
 
-class ProyectoAdmin(admin.ModelAdmin):
-    list_display = ('usuario','nombre','id_categoria')
-    list_filter = ('id_categoria','nombre')
+class PersonaAdmin(admin.ModelAdmin):
+    list_display = ('usuario','nombre','descripcion')
+    list_filter = ('nombre','apellido')
     search_fields = ['nombre', 'usuario']
 
-class CategoriaAdmin(admin.ModelAdmin):
-    list_display = ('get_nombre', 'get_email')
-    search_fields = ['usuario__username']
+#class CategoriaAdmin(admin.ModelAdmin):
+#    list_display = ('get_nombre', 'get_email')
+#    search_fields = ['usuario__username']
 
-    def get_nombre(self, obj):
-      return obj.usuario.username
+#    def get_nombre(self, obj):
+#      return obj.usuario.username
 
-    def get_email(self, obj):
-      return obj.usuario.email
+#    def get_email(self, obj):
+#      return obj.usuario.email
 
-    get_nombre.short_description = 'usuario'
-    get_email.short_description = 'email'
+#    get_nombre.short_description = 'usuario'
+#    get_email.short_description = 'email'
 
-class PerfilAdmin(admin.ModelAdmin):
-  list_display = ('user','nombre', 'direccion', 'edad', 'fechaingreso','imagen')
-  list_filter = ('nombre','edad')
-  search_fields = ['nombre', 'fechaingreso']
+class PatrocinioAdmin(admin.ModelAdmin):
+    list_display = ('razon_patrocinio','fecha_patrocinio')
 
 
-admin.site.register(Proyecto, ProyectoAdmin)
-admin.site.register(Categoria, CategoriaAdmin)
-admin.site.register(Perfil, PerfilAdmin)
+admin.site.register(Persona, PersonaAdmin)
+admin.site.register(Patrocinio,PatrocinioAdmin)
+admin.site.register(Categoria)
