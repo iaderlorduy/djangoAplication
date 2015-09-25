@@ -1,0 +1,33 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+
+<h2>{{ title }}.</h2>
+<h3>{{ message }}</h3>
+
+<address>
+    {{ user.username|upper}}<br />
+    {{ user.persona.email }}<br />
+</address>
+
+<div class="row">
+
+    <div class="col-md-12 navbar-brand" data-example-id="textarea-form-control">
+      <select class="form-control">
+          <option>DENUCIAS</option>
+          <option>PETICIONES</option>
+          <option>QUEJAS</option>
+          <option>RECLAMO</option>
+          <option>SUGERENCIA</option>
+    </select>
+    <br />
+
+      <textarea class="form-control" rows="3" placeholder="Descripcion"></textarea>
+<br />
+      <a type="button" class="btn btn-primary"  href="/savePeticion">Enviar</a>
+      <a type="button" class="btn btn-danger"  href="/">Cancelar</a>
+  </div>
+
+</div>
+
+{% endblock %}

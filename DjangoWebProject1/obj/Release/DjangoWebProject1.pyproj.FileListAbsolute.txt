@@ -1,0 +1,5 @@
+C:\Users\ilorduy\Documents\Iader Lorduy\RepositorioGit\djangoAplication\DjangoWebProject1\bin\Microsoft.PythonTools.WebRole.dll
+C:\Users\ilorduy\Documents\Iader Lorduy\RepositorioGit\djangoAplication\DjangoWebProject1\bin\AzureSetup.cfg
+C:\Users\ilorduy\Documents\Iader Lorduy\RepositorioGit\djangoAplication\DjangoWebProject1\bin\Microsoft.PythonTools.AzureSetup.exe
+C:\Users\ilorduy\Documents\Iader Lorduy\RepositorioGit\djangoAplication\DjangoWebProject1\bin\Microsoft.PythonTools.AzureSetup.exe.config
+C:\Users\ilorduy\Documents\Iader Lorduy\RepositorioGit\djangoAplication\DjangoWebProject1\bin\wfastcgi.py

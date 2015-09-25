@@ -1,5 +1,6 @@
 ﻿from django.db import models
 from django.contrib.auth.models import User
+import uuid
 
 # Create your models here.
 class Persona(models.Model):
@@ -16,19 +17,44 @@ class Persona(models.Model):
     def __unicode__(self): return self.nombre
 
 
-class Categoria(models.Model):
-	id_categoria = models.AutoField(primary_key=True)
-	nombre = models.CharField(max_length=50, blank = True , unique=True)
-	activo = models.BooleanField(default = False)
-	fecha_creacion = models.DateTimeField(auto_now=True)
-	def __unicode__(self):
-		return self.nombre
+TIPO_FACTURA = (
+    ('ACUEDUCTO'     , 'ACUEDUCTO'     ),
+    ('ALCANTARILLADO', 'ALCANTARILLADO'),
+    ('ASEO'          , 'ASEO'          ),
+    ('ELECTRICA'     , 'ELECTRICA'     ),
+    ('GAS'           , 'GAS'           ),
+)
 
-class Patrocinio(models.Model):
-	id_patrocinado = models.ForeignKey(Persona, related_name='id_patrocinado')
-	id_patrocinador = models.ForeignKey(Persona, related_name='id_patrocinador')
-	id_categoria = models.ForeignKey(Categoria)
-	fecha_patrocinio = models.DateField(auto_now = True)
-	razon_patrocinio = models.TextField(max_length=50, blank = True)
-        def __unicode__(self): return self.razon_patrocinio
-        
+TIPO_PETICION = (
+    ('DENUCIAS'     , 'DENUCIAS'     ),
+    ('PETICIONES', 'PETICIONES'),
+    ('QUEJAS'          , 'QUEJAS'          ),
+    ('RECLAMO'     , 'RECLAMO'     ),
+    ('SUGERENCIA'           , 'SUGERENCIA'           ),
+)
+
+ESTADO_FACTURA = (
+    ('CREADA'     , 'CREADA'     ),
+    ('PAGADA', 'PAGADA'),
+    ('ANULADA'          , 'ANULADA'          ),
+)
+
+def my_random_key():
+    return uuid.uuid4()
+
+class Factura(models.Model):
+    id_factura = models.AutoField(primary_key=True)
+    tipo_factura = models.CharField(max_length=50, choices=TIPO_FACTURA, default='CREADA')
+    codigo = models.CharField(max_length=48, default=my_random_key)
+    usuario = models.ForeignKey(User)
+    fecha_emision = models.DateTimeField(auto_now=True)
+    fecha_vencimiento = models.DateTimeField(auto_now=False)
+    valor = models.DecimalField(max_digits=10, decimal_places=2)
+    descripcion = models.TextField(max_length=50, blank = True)
+    estado_factura = models.CharField(max_length=50, choices=ESTADO_FACTURA, default=1)
+    def __unicode__(self): return self.usuario.username
+
+class Peticion(models.Model):
+    id_peticion = models.AutoField(primary_key=True)
+    tipo_peticion = models.CharField(max_length=50, choices=TIPO_PETICION, default=1)
+    descripcion = models.TextField(max_length=50, blank = True)

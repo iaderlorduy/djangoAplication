@@ -6,6 +6,7 @@
     <RootNamespace>DjangoWebProject1</RootNamespace>
     <InterpreterId>{24248719-d80a-428f-8fca-745fecc7380f}</InterpreterId>
     <InterpreterVersion>2.7</InterpreterVersion>
+    <NameOfLastUsedPublishProfile>isoftDjango - Web Deploy</NameOfLastUsedPublishProfile>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -59,9 +60,16 @@
     <Folder Include="Registro\templates\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\templates\app\consulta.html" />
+    <Content Include="app\templates\app\contact.html" />
+    <Content Include="app\templates\app\error.html" />
+    <Content Include="app\templates\app\peticion.html" />
+    <Content Include="app\templates\app\registre.html" />
+    <None Include="isoftDjango - Web Deploy.pubxml" />
+    <None Include="isoftDjango - FTP.pubxml" />
+    <Content Include="db.sqlite3" />
     <Content Include="Registro\templates\index.html" />
     <Content Include="requirements.txt" />
-    <Content Include="db.sqlite3" />
     <Content Include="app\static\app\content\bootstrap.css" />
     <Content Include="app\static\app\content\bootstrap.min.css" />
     <Content Include="app\static\app\content\site.css" />
@@ -85,7 +93,6 @@
     <Content Include="app\static\app\scripts\respond.min.js" />
     <Content Include="app\static\app\scripts\_references.js" />
     <Content Include="app\templates\app\about.html" />
-    <Content Include="app\templates\app\contact.html" />
     <Content Include="app\templates\app\index.html" />
     <Content Include="app\templates\app\layout.html" />
     <Content Include="app\templates\app\login.html" />

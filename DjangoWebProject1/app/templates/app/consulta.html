@@ -1,0 +1,35 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+
+<h2>{{ title }}.</h2>
+<h3>{{ message }}</h3>
+
+
+{% for f in Factura %}
+<table class="table table-hover">
+  <tr>
+    <th>Tipo Factura</td>
+      <th>Valor a Pagar</td>
+        <th>Fecha de Vencimiento</td>
+          <th>Descripcion</td>
+            <th>Código Factura</td>
+    <th>Estado Factura</td>
+  </tr>
+  <tr>
+    <td>{{ f.tipo_factura|upper }}</td>
+    <td>{{f.valor}}</td>
+    <td>{{f.fecha_vencimiento}}</td>
+    <td>{{f.descripcion}}</td>
+    <td>{{f.codigo}}</td>
+    <td>
+        {{f.estado_factura}}
+    </td>
+  </tr>
+</table>
+
+{% endfor %}
+
+<a type="button" class="btn btn-primary" href="/">Atras</a>
+
+{% endblock %}

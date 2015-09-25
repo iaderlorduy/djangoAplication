@@ -1,29 +1,19 @@
 ﻿from django.contrib import admin
-from Registro.models import Persona, Categoria, Patrocinio
+from Registro.models import Persona, Factura
 # Register your models here.
 
 class PersonaAdmin(admin.ModelAdmin):
-    list_display = ('usuario','nombre','descripcion')
+    list_display = ('usuario','nombre','descripcion','email')
     list_filter = ('nombre','apellido')
     search_fields = ['nombre', 'usuario']
 
-#class CategoriaAdmin(admin.ModelAdmin):
-#    list_display = ('get_nombre', 'get_email')
-#    search_fields = ['usuario__username']
 
-#    def get_nombre(self, obj):
-#      return obj.usuario.username
+class FacturaAdmin(admin.ModelAdmin):
+    list_display = ('tipo_factura','usuario','fecha_emision','fecha_vencimiento','descripcion')
+    list_filter = ('tipo_factura','usuario','fecha_emision','fecha_vencimiento','descripcion')
+    search_fields = ('fecha_emision','fecha_vencimiento')
 
-#    def get_email(self, obj):
-#      return obj.usuario.email
-
-#    get_nombre.short_description = 'usuario'
-#    get_email.short_description = 'email'
-
-class PatrocinioAdmin(admin.ModelAdmin):
-    list_display = ('razon_patrocinio','fecha_patrocinio')
 
 
 admin.site.register(Persona, PersonaAdmin)
-admin.site.register(Patrocinio,PatrocinioAdmin)
-admin.site.register(Categoria)
+admin.site.register(Factura, FacturaAdmin)
